@@ -15,24 +15,22 @@ export function ExchangeCard({
   available,
   currentCountry,
 }: ExchangeCardProps) {
-  async function handleClick() {
-    try {
-      await fetch("/api/click", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          exchange: exchange.id,
-          country: currentCountry,
-          timestamp: Date.now(),
-        }),
-      });
-    } catch (error) {
-      console.error("failed to track click", error);
-    }
-
+  function handleClick() {
     window.open(exchange.href, "_blank", "noopener,noreferrer");
+
+    fetch("/api/click", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        exchange: exchange.id,
+        country: currentCountry,
+        timestamp: Date.now(),
+      }),
+    }).catch((error) => {
+      console.error("failed to track click", error);
+    });
   }
 
   return (
@@ -83,6 +81,7 @@ export function ExchangeCard({
       <div className="mt-8">
         {available ? (
           <button
+            type="button"
             onClick={handleClick}
             className="inline-flex rounded-2xl bg-white px-5 py-3 font-medium text-black transition hover:scale-[1.02]"
           >
@@ -90,6 +89,7 @@ export function ExchangeCard({
           </button>
         ) : (
           <button
+            type="button"
             disabled
             className="inline-flex cursor-not-allowed rounded-2xl border border-white/10 bg-white/5 px-5 py-3 font-medium text-zinc-500"
           >

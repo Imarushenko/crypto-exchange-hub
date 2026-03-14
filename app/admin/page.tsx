@@ -19,6 +19,7 @@ type StatsResponse = {
     timestamp: number;
     createdAt: string;
   }[];
+  error?: string;
 };
 
 function formatDate(value: string) {
@@ -26,17 +27,44 @@ function formatDate(value: string) {
 }
 
 export default function AdminPage() {
-  const [stats, setStats] = useState<StatsResponse | null>(null);
+  const [stats, setStats] = useState<StatsResponse>({
+    totalClicks: 0,
+    clicksByExchange: [],
+    clicksByCountry: [],
+    recentClicks: [],
+  });
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadStats() {
       try {
-        const response = await fetch("/api/stats");
+        const response = await fetch("/api/stats", {
+          cache: "no-store",
+        });
+
         const data = await response.json();
-        setStats(data);
+
+        setStats({
+          totalClicks: typeof data.totalClicks === "number" ? data.totalClicks : 0,
+          clicksByExchange: Array.isArray(data.clicksByExchange)
+            ? data.clicksByExchange
+            : [],
+          clicksByCountry: Array.isArray(data.clicksByCountry)
+            ? data.clicksByCountry
+            : [],
+          recentClicks: Array.isArray(data.recentClicks) ? data.recentClicks : [],
+          error: data.error,
+        });
       } catch (error) {
         console.error("failed to load stats", error);
+        setStats({
+          totalClicks: 0,
+          clicksByExchange: [],
+          clicksByCountry: [],
+          recentClicks: [],
+          error: "failed to load stats",
+        });
       } finally {
         setLoading(false);
       }
@@ -50,17 +78,6 @@ export default function AdminPage() {
       <main className="min-h-screen bg-[#050505] px-6 py-16 text-white">
         <div className="mx-auto max-w-6xl">
           <h1 className="text-3xl font-semibold">Loading dashboard...</h1>
-        </div>
-      </main>
-    );
-  }
-
-  if (!stats) {
-    return (
-      <main className="min-h-screen bg-[#050505] px-6 py-16 text-white">
-        <div className="mx-auto max-w-6xl">
-          <h1 className="text-3xl font-semibold">Admin Dashboard</h1>
-          <p className="mt-4 text-zinc-400">Failed to load stats.</p>
         </div>
       </main>
     );
@@ -80,7 +97,20 @@ export default function AdminPage() {
             Track referral activity, country distribution, and recent click
             events from one place.
           </p>
+
+          <a
+            href="/"
+            className="mt-4 inline-flex rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/10"
+          >
+            Back to homepage
+          </a>
         </div>
+
+        {stats.error && (
+          <div className="mb-8 rounded-3xl border border-red-400/20 bg-red-400/10 p-5 text-red-300">
+            Warning: {stats.error}
+          </div>
+        )}
 
         <div className="mb-10 grid gap-6 md:grid-cols-3">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">

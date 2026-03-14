@@ -38,17 +38,20 @@ export async function GET() {
       ]);
 
     return NextResponse.json({
-      totalClicks,
-      clicksByExchange,
-      clicksByCountry,
-      recentClicks,
+      totalClicks: totalClicks ?? 0,
+      clicksByExchange: clicksByExchange ?? [],
+      clicksByCountry: clicksByCountry ?? [],
+      recentClicks: recentClicks ?? [],
     });
   } catch (error) {
     console.error("failed to fetch stats", error);
 
-    return NextResponse.json(
-      { error: "failed to fetch stats" },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      totalClicks: 0,
+      clicksByExchange: [],
+      clicksByCountry: [],
+      recentClicks: [],
+      error: "failed to fetch stats",
+    });
   }
 }
