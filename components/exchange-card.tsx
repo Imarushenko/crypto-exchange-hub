@@ -16,21 +16,33 @@ export function ExchangeCard({
   currentCountry,
 }: ExchangeCardProps) {
   function handleClick() {
-    window.open(exchange.href, "_blank", "noopener,noreferrer");
-
-    fetch("/api/click", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        exchange: exchange.id,
-        country: currentCountry,
-        timestamp: Date.now(),
-      }),
-    }).catch((error) => {
-      console.error("failed to track click", error);
+    const payload = JSON.stringify({
+      exchange: exchange.id,
+      country: currentCountry,
+      timestamp: Date.now(),
     });
+
+    try {
+      if (navigator.sendBeacon) {
+        const blob = new Blob([payload], { type: "application/json" });
+        navigator.sendBeacon("/api/click", blob);
+      } else {
+        fetch("/api/click", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: payload,
+          keepalive: true,
+        }).catch((error) => {
+          console.error("failed to track click", error);
+        });
+      }
+    } catch (error) {
+      console.error("failed to send click event", error);
+    }
+
+    window.open(exchange.href, "_blank", "noopener,noreferrer");
   }
 
   return (
