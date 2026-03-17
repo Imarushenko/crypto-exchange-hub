@@ -9,11 +9,13 @@ import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
 import { RegionNotice } from "@/components/region-notice";
+import { GuidesSection } from "@/components/guides-section";
 import {
   getExchangeStatusLabel,
   isExchangeAvailableInCountry,
   normalizeCountryCode,
 } from "@/lib/geo";
+
 
 const SUPPORTED_COUNTRY = "IL";
 
@@ -87,11 +89,13 @@ export default async function HomePage() {
       </section>
 
       <ComparisonTable />
+      <GuidesSection />
       <Features />
       <RegionNotice currentCountry={currentCountry} />
       <FAQ />
       <CtaSection />
       <Footer />
+
     </main>
   );
 }

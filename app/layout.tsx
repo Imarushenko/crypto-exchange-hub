@@ -15,18 +15,18 @@ export const metadata: Metadata = {
     "crypto exchanges by country",
   ],
   openGraph: {
-    title: "Crypto Exchange Hub",
+    title: "Crypto Exchange Offers for Israel | CryptoStartIL",
     description:
-      "Find crypto exchanges that actually work in your region.",
+      "Explore crypto exchange referral offers currently intended for users in Israel.",
     url: siteConfig.url,
-    siteName: "Crypto Exchange Hub",
+    siteName: "CryptoStartIL",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Crypto Exchange Hub",
+    title: "Crypto Exchange Offers for Israel | CryptoStartIL",
     description:
-      "Find crypto exchanges that actually work in your region.",
+      "Explore crypto exchange referral offers currently intended for users in Israel.",
   },
 };
 

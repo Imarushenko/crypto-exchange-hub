@@ -24,10 +24,33 @@ export function CtaSection() {
           </a>
 
           <a
-            href="/admin"
+            href="/bybit-referral-israel"
             className="rounded-2xl border border-white/10 bg-white/5 px-6 py-3 font-medium text-white transition hover:bg-white/10"
           >
-            Open admin dashboard
+            Open Bybit guide
+          </a>
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3 text-sm text-zinc-300">
+          <a
+            href="/best-crypto-exchange-israel"
+            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 transition hover:bg-white/10"
+          >
+            Best Crypto Exchange in Israel
+          </a>
+
+          <a
+            href="/bybit-referral-israel"
+            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 transition hover:bg-white/10"
+          >
+            Bybit Referral for Israel
+          </a>
+
+          <a
+            href="/crypto-trading-israel"
+            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 transition hover:bg-white/10"
+          >
+            Crypto Trading in Israel
           </a>
         </div>
       </div>
