@@ -6,7 +6,7 @@ export function Navbar() {
           href="/"
           className="text-sm font-semibold uppercase tracking-[0.25em] text-emerald-300"
         >
-          CryptoStartIL
+          CryptoEntry
         </a>
 
         <nav className="hidden items-center gap-6 text-sm text-zinc-300 md:flex">
@@ -21,12 +21,6 @@ export function Navbar() {
             className="transition hover:text-white"
           >
             Best Exchange
-          </a>
-          <a
-            href="/bybit-referral-israel"
-            className="transition hover:text-white"
-          >
-            Bybit
           </a>
           <a href="/admin" className="transition hover:text-white">
             Admin
