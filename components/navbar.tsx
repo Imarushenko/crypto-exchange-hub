@@ -22,9 +22,6 @@ export function Navbar() {
           >
             Best Exchange
           </a>
-          <a href="/admin" className="transition hover:text-white">
-            Admin
-          </a>
         </nav>
       </div>
     </header>
