@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: "Crypto Exchange Offers for Israel | Crypto Exchange Hub",
+  title: "Crypto Exchange Offers for Israel | CryptoEntry",
   description:
     "Explore crypto exchange referral offers currently intended for users in Israel.",
   keywords: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "crypto exchanges by country",
   ],
   openGraph: {
-    title: "Crypto Exchange Offers for Israel | CryptoStartIL",
+    title: "Crypto Exchange Offers for Israel | CryptoEntry",
     description:
       "Explore crypto exchange referral offers currently intended for users in Israel.",
     url: siteConfig.url,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Crypto Exchange Offers for Israel | CryptoStartIL",
+    title: "Crypto Exchange Offers for Israel | CryptoEntry",
     description:
       "Explore crypto exchange referral offers currently intended for users in Israel.",
   },
