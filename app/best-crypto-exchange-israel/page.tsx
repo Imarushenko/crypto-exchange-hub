@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SeoPageLayout } from "@/components/seo-page-layout";
 
 export const metadata: Metadata = {
-  title: "Best Crypto Exchange in Israel | Crypto Exchange Hub",
+  title: "Best Crypto Exchange in Israel | CryptoEntry",
   description:
     "Explore crypto exchange options for users in Israel and compare the current referral offer available on this site.",
 };

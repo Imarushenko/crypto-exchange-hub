@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SeoPageLayout } from "@/components/seo-page-layout";
 
 export const metadata: Metadata = {
-  title: "Bybit Referral Israel | Crypto Exchange Hub",
+  title: "Bybit Referral Israel | CryptoEntry",
   description:
     "Explore the current Bybit referral offer intended for users in Israel.",
 };
