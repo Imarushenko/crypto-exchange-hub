@@ -28,6 +28,10 @@ export const metadata: Metadata = {
     description:
       "Explore crypto exchange referral offers currently intended for users in Israel.",
   },
+
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
