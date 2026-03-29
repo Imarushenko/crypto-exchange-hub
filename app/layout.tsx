@@ -29,6 +29,10 @@ export const metadata: Metadata = {
       "Explore crypto exchange referral offers currently intended for users in Israel.",
   },
 
+  alternates: {
+    canonical: "https://www.cryptoentry.io",
+  },
+
   icons: {
     icon: [
       { url: "/favicon.ico" },
